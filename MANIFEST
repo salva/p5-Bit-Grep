@@ -1,0 +1,8 @@
+Changes
+Grep.xs
+Makefile.PL
+MANIFEST
+ppport.h
+README
+t/Bit-Grep.t
+lib/Bit/Grep.pm
