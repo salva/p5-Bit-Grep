@@ -1,15 +1,19 @@
-# Before `make install' is performed this script should be runnable with
-# `make test'. After `make install' it should work as `perl Bit-Grep.t'
+#!/usr/bin/perl
 
-#########################
+use Test::More;
+use List::Util qw(sum);
+use Bit::Grep qw(bg_grep bg_sum);
 
-# change 'tests => 1' to 'tests => last_test_to_print';
+for my $i (1..50) {
+    my @a = (1..$i);
+    my %h;
+    $h{int rand @a} = 1 for 0..int rand @a;
+    my @h = sort { $a <=> $b } keys %h;
+    # diag "@h";
+    my $v = '';
+    vec($v, $_, 1) = 1 for @h;
+    is_deeply([bg_grep $v, @a], [@a[@h]]);
+    is(bg_sum($v, @a), sum(@a[@h]));
+}
 
-use Test::More tests => 1;
-BEGIN { use_ok('Bit::Grep') };
-
-#########################
-
-# Insert your test code below, the Test::More module is use()ed here so read
-# its man page ( perldoc Test::More ) for help writing this test script.
-
+done_testing();
