@@ -1,8 +1,11 @@
+benchmarks/grep.pl
+benchmarks/sum.pl
 Changes
 Grep.xs
+lib/Bit/Grep.pm
 Makefile.PL
 MANIFEST
 ppport.h
 README
 t/Bit-Grep.t
-lib/Bit/Grep.pm
+t/pods.t
